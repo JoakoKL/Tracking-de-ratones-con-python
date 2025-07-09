@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Seguimiento de Ratón</title>
+  <style>
+    body { display: flex; flex-direction: column; align-items: center; }
+    .panel { text-align: center; margin-top: 20px; }
+    img { border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <!-- Formulario para elegir y subir el video -->
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <label for="video">Selecciona un video:</label>
+    <input type="file" name="video" id="video" accept="video/*">
+    <input type="submit" value="Subir Video">
+  </form>
+
+  <!-- Botón para reiniciar el video desde cero -->
+  <form action="/reset" method="post" style="margin-top:10px;">
+    <input type="submit" value="Reiniciar Video">
+  </form>
+
+  <div class="panel">
+    <h2>Video Original</h2>
+    <img src="{{ url_for('video_feed') }}" width="640" />
+  </div>
+  <div class="panel">
+    <h2>Trayectoria</h2>
+    <img src="{{ url_for('track_feed') }}" width="640" />
+  </div>
+</body>
+</html>
